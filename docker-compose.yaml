@@ -1,0 +1,37 @@
+version: "3.1"
+networks:
+  localnetwork:
+services:
+  db:
+    image: mysql:8.0.30
+    command: --default-authentication-plugin=caching_sha2_password
+    restart: always
+    env_file: ./db/.env
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/mysql/init:/docker-entrypoint-initdb.d
+      - ./db/mysql/data:/var/lib/mysql
+    networks:
+      - localnetwork
+  web:
+    image: dsp8ef9/psite_web:latest
+    build: ../psite-web/.
+    env_file: ./web/.env
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./web/apache/log:/var/log/apache2
+      - ./web/php/fpm/log:/var/log/php-fpm
+      - ./web/apache/htpasswd:/var/www/htpasswd
+    networks:
+      - localnetwork
+  mail:
+    image: dsp8ef9/psite_email:latest
+    build: ../psite-email/.
+    env_file: ./mail/.env
+    volumes:
+      - ./mail/log:/var/log/mail_service
+    networks:
+    - localnetwork
