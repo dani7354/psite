@@ -17,6 +17,7 @@ db/.env
 
 web/app/html/assets/files/*
 web/apache/log/*
+web/apache/ssl/*
 web/php/fpm/log/*
 web/.env
 

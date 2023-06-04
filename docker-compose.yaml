@@ -10,7 +10,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./db/mysql/init:/docker-entrypoint-initdb.d
+      - ./db/mysql/init:/docker-entrypoint-initdb.d:ro
       - ./db/mysql/data:/var/lib/mysql
     networks:
       - localnetwork
@@ -24,6 +24,7 @@ services:
     volumes:
       - ./web/apache/log:/var/log/apache2
       - ./web/php/fpm/log:/var/log/php-fpm
+      - ./web/apache/ssl:/etc/apache2/ssl:ro
     networks:
       - localnetwork
   mail:
