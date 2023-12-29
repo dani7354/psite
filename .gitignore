@@ -18,8 +18,10 @@ db/.env
 web/app/html/assets/files/*
 web/apache/log/*
 web/apache/ssl/*
+web/apache/htpasswd
 web/php/fpm/log/*
 web/.env
 
-mail/log/*
-mail/.env
+job/log/*
+job/.env
+job/config/*

@@ -25,13 +25,15 @@ services:
       - ./web/apache/log:/var/log/apache2
       - ./web/php/fpm/log:/var/log/php-fpm
       - ./web/apache/ssl:/etc/apache2/ssl:ro
+      - ./web/apache/htpasswd:/var/www/htpasswd:ro
     networks:
       - localnetwork
-  mail:
-    image: dsp8ef9/psite_email:latest
-    build: ../psite-email/.
-    env_file: ./mail/.env
+  job:
+    image: dsp8ef9/psite_job:latest
+    build: ../psite-job/.
+    env_file: ./job/.env
     volumes:
-      - ./mail/log:/var/log/mail_service
+      - ./job/log:/var/log/psitejob
+      - ./job/config/config.json:/usr/local/psitejob/config/config.json:ro
     networks:
     - localnetwork
