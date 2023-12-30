@@ -25,3 +25,4 @@ web/.env
 job/log/*
 job/.env
 job/config/*
+job/goaccess/*

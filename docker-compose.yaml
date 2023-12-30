@@ -35,5 +35,7 @@ services:
     volumes:
       - ./job/log:/var/log/psitejob
       - ./job/config/config.json:/usr/local/psitejob/config/config.json:ro
+      - ./web/apache/log:/var/log/stuhrs_dk/web:ro
+      - ./job/goaccess:/usr/local/psitejob/goaccess
     networks:
     - localnetwork
