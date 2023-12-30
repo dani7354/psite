@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.30, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.33, for Linux (x86_64)
 --
 -- Host: localhost    Database: stuhrs_dk
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `Message` (
   `DateCreated` datetime NOT NULL,
   `DateSent` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,6 +54,23 @@ CREATE TABLE `Project` (
   UNIQUE KEY `Url` (`Url`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ProjectUpdate`
+--
+
+DROP TABLE IF EXISTS `ProjectUpdate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ProjectUpdate` (
+  `Id` mediumint unsigned NOT NULL AUTO_INCREMENT,
+  `ProjectId` mediumint unsigned NOT NULL,
+  `UpdatedAt` datetime NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `ProjectId` (`ProjectId`),
+  CONSTRAINT `ProjectUpdate_ibfk_1` FOREIGN KEY (`ProjectId`) REFERENCES `Project` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -64,4 +81,4 @@ CREATE TABLE `Project` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-03 16:46:28
+-- Dump completed on 2023-12-30 11:27:52
