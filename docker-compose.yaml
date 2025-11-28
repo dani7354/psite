@@ -2,8 +2,8 @@ networks:
   localnetwork:
 services:
   db:
-    image: mysql:8.0.33
-    command: --default-authentication-plugin=caching_sha2_password
+    image: mysql:8.4.7
+    command: --mysql-native-password=ON
     restart: always
     env_file: ./db/.env
     ports:
