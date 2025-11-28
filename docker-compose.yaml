@@ -3,7 +3,7 @@ networks:
 services:
   db:
     image: mysql:8.4.7
-    command: --mysql-native-password=ON
+    command: --mysql_native_password=ON
     restart: always
     env_file: ./db/.env
     ports:
